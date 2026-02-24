@@ -1,6 +1,6 @@
 import os
 if os.name != 'nt':
-    print('this app is only available on windows right now!\nexiting...')
+    print("this app is only available on windows!\nexiting...")
     exit()
 import time
 import winsound
@@ -8,18 +8,22 @@ import random
 
 
 # created by SpiritOfTheNight
-# github : https://www.github.com/SpiritOfTheNight/
+# github : https://github.com/spiritofthenight/
+
+
 
 time_format = '' # we determine if user input is in second or minute format !
+
 
 # for colorizing the console always as green .
 def start_color():
     os.system('color a')
 
-# for colorizing the console randomly when the timer stop ! good for when user do not have any sound device
+# for colorizing the console randomly when the timer stop !
 def colorize():
-    for c in range(1, 7):
-        return random.randint(1, 6)
+    color_list = [1,2,3,4,5,6,9]
+    for c in color_list:
+        return color_list[random.randint(1, 6)]
 
 # for clearing the console .
 def clear():
@@ -27,20 +31,6 @@ def clear():
 
 # main timer function
 def timer(usr_time):
-    minute = 0
-    second = 60
-    minutes_left = int(usr_time) // 60
-    seconds_left = int(usr_time) % 60
-    seconds_passed = 0
-
-    
-    fixed_usr_time = int(usr_time)
-    passed = fixed_usr_time - int(usr_time)
-    passed_min = passed // 60
-    passed_sec = passed % 60
-
-    remain_min = int(usr_time) // 60
-    remain_sec = int(usr_time) % 60
 
     fixed_usr_time = int(usr_time)
     if int(usr_time) == 0:
@@ -55,7 +45,7 @@ def timer(usr_time):
             print(f"\n| {t} second passed | {int(usr_time) - t} is remaining |")
             time.sleep(1)
             clear()
-    
+    elif int(usr_time) > 60:
 
         while int(usr_time) > 0:
            
@@ -67,7 +57,7 @@ def timer(usr_time):
             remain_sec = int(usr_time) % 60
             print(f"You setted the timer for: {fixed_usr_time} second, which equals to: {float((int(fixed_usr_time) / 60)):.02f} minutes") # pol this later
             print(f"\n| {passed_min}:{passed_sec:02d} passed | {remain_min}:{remain_sec:02d} is remaining ! |")
-            
+            #print(usr_time, ": usr time") 
             
             time.sleep(1)
             usr_time -= 1
@@ -75,7 +65,7 @@ def timer(usr_time):
 
     
 
-    # creating Sounds after the timer ends using Random numbers in certian range :
+    # creating Sounds after the timer ends using Random numbers !:
     print('timer Stopped !\n')
     winsound.Beep(random.randint(800, 1500), 100)
     os.system(f"color {colorize()}")
@@ -83,10 +73,10 @@ def timer(usr_time):
     os.system(f"color {colorize()}")
     winsound.Beep(random.randint(800, 1500), 100)
     os.system(f"color {colorize()}")
-    winsound.Beep(random.randint(800, 1500), 300)  
-    os.system(f"color {colorize()}") 
-    winsound.Beep(random.randint(800, 1500), 300)
-    os.system(f"color {colorize()}")               
+    winsound.Beep(random.randint(800, 1500), 300)  # this part is for generating sound and randomly 
+    os.system(f"color {colorize()}")               # and chaging txt color randomly
+    winsound.Beep(random.randint(800, 1500), 300)  # when the timer stops ! pretty cool I guess !
+    os.system(f"color {colorize()}")               # if I say it for myself !
     winsound.Beep(random.randint(800, 1500), 300)
     os.system(f"color {colorize()}")
     winsound.Beep(random.randint(800, 1500), 200)
@@ -99,7 +89,7 @@ def timer(usr_time):
 
 def main():
     start_color()
-    print("\n-- Big Boy's Timer --\n") # lol
+    print('\n-- Big Boys Timer --\n')
     
     while True:
         try:
@@ -135,6 +125,6 @@ def main():
             break
 
 
-# magic phrase :
+# magic phrase !
 if __name__ == "__main__":
     main()
