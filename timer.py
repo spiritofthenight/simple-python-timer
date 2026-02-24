@@ -1,4 +1,7 @@
 import os
+if os.name != 'nt':
+    print('this app is only available on windows right now!\nexiting...')
+    exit()
 import time
 import winsound
 import random
@@ -7,16 +10,7 @@ import random
 # created by SpiritOfTheNight
 # github : https://www.github.com/SpiritOfTheNight/
 
-
-
 time_format = '' # we determine if user input is in second or minute format !
-
-# to detect if the user is using windows only ! I will update it for posix systems later .
-def detector():
-    if not os.name == 'nt':
-        print('this tool is only available on windows for now, sorry !')
-        exit()
-
 
 # for colorizing the console always as green .
 def start_color():
@@ -98,12 +92,6 @@ def timer(usr_time):
     winsound.Beep(random.randint(800, 1500), 200)
     os.system(f"color {colorize()}")
     os.system(f"color a")
-
-
-
-# to detect if the user is using a windows device:
-detector()
-
 
 
 
